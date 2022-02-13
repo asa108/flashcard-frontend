@@ -20,6 +20,8 @@ export async function getStaticProps() {
 
   return {
     props: { flashcards },
+    // 最初の３カードだけを表示
+    // props: { flashcards.slice(0,3) },
     revalidate: 1,
   };
 }
