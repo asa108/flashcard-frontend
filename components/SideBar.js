@@ -12,7 +12,7 @@ export default function SideBar() {
             </Link>
           </li>
           <li>
-            <Link href="/add">
+            <Link href="/flashcards/add">
               <a>Add new word</a>
             </Link>
           </li>
