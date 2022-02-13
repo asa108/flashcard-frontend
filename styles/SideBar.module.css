@@ -1,0 +1,14 @@
+.sidebar{
+    margin: 100px 0 40px;
+    text-align: left;
+    position: fixed;
+    top:30px;
+    left:0px;
+    
+}
+
+.sidebar li{
+    margin: 20px 40px;
+    list-style-type: none;
+}
+
