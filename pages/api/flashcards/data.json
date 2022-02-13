@@ -1,0 +1,52 @@
+{
+  "flashcards": [
+    {
+      "id": "1",
+      "terms": "modesty",
+      "definition": "謙遜する",
+      "check1": false,
+      "check2": false,
+      "check3": false
+    },
+    {
+      "id": "2",
+      "terms": "pottery",
+      "definition": "陶器",
+      "check1": false,
+      "check2": false,
+      "check3": false
+    },
+    {
+      "id": "3",
+      "terms": "villa",
+      "definition": "別荘",
+      "check1": false,
+      "check2": false,
+      "check3": false
+    },
+    {
+      "id": "4",
+      "terms": "urban",
+      "definition": "都市",
+      "check1": false,
+      "check2": false,
+      "check3": false
+    },
+    {
+      "id": "5",
+      "terms": "poverty",
+      "definition": "貧困",
+      "check1": false,
+      "check2": false,
+      "check3": false
+    },
+    {
+      "id": "6",
+      "terms": "compost",
+      "definition": "肥料",
+      "check1": false,
+      "check2": false,
+      "check3": false
+    }
+  ]
+}
