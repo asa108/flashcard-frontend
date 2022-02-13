@@ -2,7 +2,7 @@
   "flashcards": [
     {
       "id": "1",
-      "terms": "modesty",
+      "term": "modesty",
       "definition": "謙遜する",
       "check1": false,
       "check2": false,
@@ -10,7 +10,7 @@
     },
     {
       "id": "2",
-      "terms": "pottery",
+      "term": "pottery",
       "definition": "陶器",
       "check1": false,
       "check2": false,
@@ -18,7 +18,7 @@
     },
     {
       "id": "3",
-      "terms": "villa",
+      "term": "villa",
       "definition": "別荘",
       "check1": false,
       "check2": false,
@@ -26,7 +26,7 @@
     },
     {
       "id": "4",
-      "terms": "urban",
+      "term": "urban",
       "definition": "都市",
       "check1": false,
       "check2": false,
@@ -34,7 +34,7 @@
     },
     {
       "id": "5",
-      "terms": "poverty",
+      "term": "poverty",
       "definition": "貧困",
       "check1": false,
       "check2": false,
@@ -42,7 +42,7 @@
     },
     {
       "id": "6",
-      "terms": "compost",
+      "term": "compost",
       "definition": "肥料",
       "check1": false,
       "check2": false,
