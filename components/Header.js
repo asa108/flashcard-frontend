@@ -13,7 +13,7 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link href="/flashcard">
+            <Link href="/flashcards">
               <a>Flashcard</a>
             </Link>
           </li>
