@@ -1,3 +1,4 @@
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import Link from "next/link";
 import styles from "@/styles/Header.module.css";
 
@@ -20,6 +21,13 @@ export default function Header() {
           <li>
             <Link href="/flashcards/add">
               <a>Add flashcard</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/account/login">
+              <a className="btn-secondary">
+                <FaSignInAlt /> Login
+              </a>
             </Link>
           </li>
         </ul>
