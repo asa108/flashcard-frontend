@@ -15,12 +15,12 @@ export default function HomePage({ flashcards }) {
 
 // get running everytime you come to the page
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/api/flashcards`);
+  const res = await fetch(`${API_URL}/flashcards`);
+  // const res = await fetch(`${API_URL}/flashcards?_sort=date:ASC&_limit=3`);
   const flashcards = await res.json();
 
   return {
     props: { flashcards },
-    // 最初の３カードだけを表示
     // props: { flashcards.slice(0,3) },
     revalidate: 1,
   };

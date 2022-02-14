@@ -15,7 +15,7 @@ export default function HomePage({ flashcards }) {
 
 // get running everytime you come to the page
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/api/flashcards`);
+  const res = await fetch(`${API_URL}/flashcards`);
   const flashcards = await res.json();
 
   return {
