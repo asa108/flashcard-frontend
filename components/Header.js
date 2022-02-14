@@ -17,6 +17,11 @@ export default function Header() {
               <a>Flashcard</a>
             </Link>
           </li>
+          <li>
+            <Link href="/flashcards/add">
+              <a>Add flashcard</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
