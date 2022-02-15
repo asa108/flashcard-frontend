@@ -41,13 +41,13 @@ export default function Flashcard({ flashcard }) {
         <div className={styles.front}>{flashcard.term}</div>
         <div className={styles.back}>{flashcard.definition}</div>
       </div>
-    <ToastContainer />
+      <ToastContainer />
       <div className={styles.icons}>
         <FaRegCheckSquare />
         <FaRegCheckSquare />
         <FaRegCheckSquare />
 
-        <Link href={`/edit/${flashcard.id}`}>
+        <Link href={`/flashcards/edit/${flashcard.id}`}>
           <a className={styles.edit}>
             <FaPencilAlt />
           </a>
