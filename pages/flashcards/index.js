@@ -3,7 +3,6 @@ import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
 
 export default function HomePage({ flashcards }) {
-  console.log(flashcards);
   return (
     <Layout title="Home Page | Flashcard">
       <h1>Flascard &gt; index</h1>
