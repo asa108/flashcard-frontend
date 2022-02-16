@@ -8,6 +8,7 @@ export default function FlashcardList({ flashcards, token }) {
   const [idx, setIdx] = useState(0);
   const [leftDisable, setLeftDisable] = useState(false);
   const [rightDisable, setRightDisable] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const totalFlashcards = flashcards.length;
   let fl = flashcards[idx];

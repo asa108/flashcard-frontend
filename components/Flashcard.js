@@ -10,7 +10,6 @@ import styles from "@/styles/Flascard.module.css";
 
 
 export default function Flashcard({ flashcard, token }) {
-  console.log(flashcard);
   const router = useRouter();
   const [flip, setFlip] = useState(false);
   const handleFlip = () => {
