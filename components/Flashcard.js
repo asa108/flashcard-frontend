@@ -46,9 +46,9 @@ export default function Flashcard({ flashcard, token }) {
       </div>
       <ToastContainer />
       <div className={styles.icons}>
-        <FaRegCheckSquare />
-        <FaRegCheckSquare />
-        <FaRegCheckSquare />
+        <FaRegCheckSquare className={styles.checkicon} />
+        <FaRegCheckSquare className={styles.checkicon} />
+        <FaRegCheckSquare className={styles.checkicon} />
 
         <Link href={`/flashcards/edit/${flashcard.id}`}>
           <a className={styles.edit}>

@@ -36,8 +36,13 @@
 }
 
 .icons{
-    text-align: right;
-    
+    text-align: right;    
+}
+
+.icons .checkicon{
+    width: 30px;
+    height: 20px;
+    color: rgb(59, 59, 59);
 }
 
 .icons .edit{
