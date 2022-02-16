@@ -4,7 +4,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import styles from "@/styles/FlashcardList.module.css";
 import Flashcard from "./Flashcard";
 
-export default function FlashcardList({ flashcards }) {
+export default function FlashcardList({ flashcards, token }) {
   const [idx, setIdx] = useState(0);
   const [leftDisable, setLeftDisable] = useState(false);
   const [rightDisable, setRightDisable] = useState(false);
@@ -44,10 +44,9 @@ export default function FlashcardList({ flashcards }) {
       setLeftDisable(false);
     }
   };
-
   return (
     <div className={styles.container}>
-      <Flashcard flashcard={fl} />
+      <Flashcard flashcard={fl} token={token} />
       <div className={styles.icons}>
         <FaChevronLeft
           className={`${styles.arrow} ${

@@ -9,17 +9,21 @@ import { API_URL } from "../config/index";
 import styles from "@/styles/Flascard.module.css";
 
 
-export default function Flashcard({ flashcard }) {
-  const router = useRouter()
+export default function Flashcard({ flashcard, token }) {
+  console.log(flashcard);
+  const router = useRouter();
   const [flip, setFlip] = useState(false);
   const handleFlip = () => {
     setFlip(!flip);
   };
 
-  const handleDelete = async (e) => {
+  const handleDelete = async (id) => {
     // if (confirm("Are you sure?")) {
-    const res = await fetch(`${API_URL}/flashcards/${flashcard.id}`, {
+    const res = await fetch(`${API_URL}/flashcards/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const data = await res.json();
@@ -27,9 +31,9 @@ export default function Flashcard({ flashcard }) {
     if (!res.ok) {
       toast.error("error");
     } else {
-      router.push("/");
+      router.push("/account/dashboard");
     }
-  // }
+    // }
   };
 
   return (
