@@ -1,12 +1,16 @@
 import { parseCookies } from "@/helpers/index";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
+import styles from "@/styles/Dashboard.module.css";
+import Flashcard from "@/components/Flashcard";
+import FlashcardList from "@/components/FlashcardList";
 
 export default function DashboardPage({ flashcards }) {
-  console.log(flashcards);
   return (
     <Layout title="User Dashboard">
-      <h1>Dashbord</h1>
+      <h1 className={styles.dash}>Dashbord</h1>
+      <h3>My Flashcards</h3>
+      <FlashcardList flashcards={flashcards} />
     </Layout>
   );
 }
