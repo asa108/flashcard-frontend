@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { parseCookies } from "@/helpers/index";
 
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
-export default function EditPage({ fl }) {
+export default function EditPage({ fl, token }) {
   const [values, setValues] = useState({
     term: fl.term,
     definition: fl.definition,
@@ -35,15 +36,20 @@ export default function EditPage({ fl }) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+      if (res.status === 403 || res.status === 401) {
+        toast.error("Unauthorized");
+        return;
+      }
       toast.error("Something went wrong");
     } else {
       const fl = await res.json();
-      router.push("/flashcards");
+      router.push("/account/dashboard");
     }
   };
 
@@ -94,14 +100,15 @@ export default function EditPage({ fl }) {
 }
 
 export async function getServerSideProps({ params: { id }, req }) {
+  const { token } = parseCookies(req);
+
   const res = await fetch(`${API_URL}/flashcards/${id}`);
   const fl = await res.json();
-
-  console.log(req.headers.cookie);
 
   return {
     props: {
       fl,
+      token,
     },
   };
 }
