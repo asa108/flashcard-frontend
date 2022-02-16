@@ -3,13 +3,14 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { parseCookies } from "@/helpers/index";
 
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 import { async } from "regenerator-runtime";
 
-export default function AddFlashcardPage() {
+export default function AddFlashcardPage({ token }) {
   const [values, setValues] = useState({
     term: "",
     definition: "",
@@ -36,15 +37,20 @@ export default function AddFlashcardPage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+      if (res.status === 403 || res.status === 401) {
+        toast.error("No token included");
+        return;
+      }
       toast.error("Something went wrong");
     } else {
       const fl = await res.json();
-      router.push("/flashcards");
+      router.push("/account/dashboard");
     }
   };
 
@@ -87,4 +93,14 @@ export default function AddFlashcardPage() {
       </form>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req);
+
+  return {
+    props: {
+      token,
+    },
+  };
 }
