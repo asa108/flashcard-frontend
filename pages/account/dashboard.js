@@ -18,7 +18,6 @@ export default function DashboardPage({ flashcards, token }) {
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
 
-  console.log(token);
   const res = await fetch(`${API_URL}/flashcards/me`, {
     method: "GET",
     headers: {

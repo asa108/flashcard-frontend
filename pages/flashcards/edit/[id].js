@@ -41,6 +41,7 @@ export default function EditPage({ fl, token }) {
       body: JSON.stringify(values),
     });
 
+    console.log("res", res);
     if (!res.ok) {
       if (res.status === 403 || res.status === 401) {
         toast.error("Unauthorized");
@@ -49,6 +50,7 @@ export default function EditPage({ fl, token }) {
       toast.error("Something went wrong");
     } else {
       const fl = await res.json();
+      console.log("fl", fl);
       router.push("/account/dashboard");
     }
   };
@@ -104,6 +106,7 @@ export async function getServerSideProps({ params: { id }, req }) {
 
   const res = await fetch(`${API_URL}/flashcards/${id}`);
   const fl = await res.json();
+  console.log("fl", fl);
 
   return {
     props: {
