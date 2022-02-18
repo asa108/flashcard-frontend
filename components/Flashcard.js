@@ -91,6 +91,7 @@ export default function Flashcard({ flashcard, token }) {
       <ToastContainer />
       <div className={styles.icons}>
         <FaRegCheckSquare
+          // onClick={}
           className={`${styles.checkicon} ${check ? `${styles.done}` : ""}`}
         />
         <FaRegCheckSquare className={styles.checkicon} />
