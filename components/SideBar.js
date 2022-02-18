@@ -17,7 +17,7 @@ export default function SideBar() {
             </Link>
           </li>
           <li>
-            <Link href="/all">
+            <Link href="/account/dashboard">
               <a>All words</a>
             </Link>
           </li>
