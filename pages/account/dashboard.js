@@ -28,7 +28,17 @@ export async function getServerSideProps({ req }) {
 
   const flashcards = await res.json();
 
+    // redirect regsiter pege when user not logged in
+  if (req.headers.token === undefined) {
+    return {
+      redirect: {
+        destination: '/account/login',
+        permanent: false,
+      },
+    }
+  }
+
   return {
-    props: { flashcards, token },
+    props: { flashcards: flashcards || null, token:token||null },
   };
 }
