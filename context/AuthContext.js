@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
     if (res.ok) {
       setUser(data.user);
-      router.push("/account/dashboard");
+      router.push("/flashcards");
     } else {
       setError(data.message);
       setError(null);
