@@ -33,58 +33,31 @@ import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
 
 export default function HomePage({ flashcards }) {
-  console.log('flashcards',flashcards)
   const [fl, setFl] = useState(flashcards)
-   console.log('fl outside',fl)
   const [auth,setAuth] = useState(false)
 
   useEffect(() => {
     checkIfAuth()
   }, [])
-
-  // let fl;
  
   const checkIfAuth = () => {
   if (flashcards.statusCode === 401 || flashcards.statusCode === 403) {
-    console.log('This is not authorized')
     setAuth(true)
   } else {
-    console.log('Authorizaed')
     setAuth(false)
     const checkIfFlase = (flashcard) => {
       return flashcard.check1 === false || flashcard.check2 === false || flashcard.check3 === false
      }
-    
     fl = flashcards.filter(checkIfFlase)
     setFl(fl)
-      console.log('fl inside', fl)
-    
-    // let flash = flashcards.filter(checkIfFlase)
-    // console.log('flash inside', flash)
-
-    // fl.push.apply(flash)
-    // let hh = fl.concat(flash)
-    // console.log('h',hh)
   } 
 }
  
   return (
     <Layout title="Home Page | Flashcard">
       {auth ? <h1>Landing Page</h1> :
-        <div>
-            {flashcards.length === 0 && (
-        <div>
-      <h3>No Flashcards</h3>
-        <Link href='/flashcards/add'>
-          <a>Add new flashcard</a>
-        </Link>
-        </div>
-          )}
-     <FlashcardList flashcards={fl} />
-     {/* <FlashcardList flashcards={fl} /> */}    
-        </div>
-      
-      }   
+       <FlashcardList flashcards={fl} />
+      }
     </Layout>
   );
 }

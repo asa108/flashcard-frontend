@@ -8,7 +8,6 @@ import { FaPencilAlt, FaTrashAlt, FaRegCheckSquare } from "react-icons/fa";
 import { API_URL } from "../config/index";
 import styles from "@/styles/Flascard.module.css";
 
-
 export default function Flashcard({ flashcard, token }) {
   const router = useRouter();
   const [flip, setFlip] = useState(false);
@@ -37,7 +36,8 @@ export default function Flashcard({ flashcard, token }) {
 
   return (
     <div>
-      <div
+      <p>Listcard</p>
+   <div
         className={`${styles.card} ${flip ? `${styles.flip}` : ""}`}
         onClick={handleFlip}
       >
@@ -62,7 +62,7 @@ export default function Flashcard({ flashcard, token }) {
         >
           <FaTrashAlt />
         </a>
-      </div>
+     </div> 
     </div>
   );
 }
