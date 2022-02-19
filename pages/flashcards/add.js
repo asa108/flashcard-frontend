@@ -8,9 +8,9 @@ import { parseCookies } from "@/helpers/index";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
-import { async } from "regenerator-runtime";
 
 export default function AddFlashcardPage({ token }) {
+  console.log('token',token)
   const [values, setValues] = useState({
     term: "",
     definition: "",
@@ -64,6 +64,7 @@ export default function AddFlashcardPage({ token }) {
         <a>Go Back</a>
       </Link>
       <h1>Add Flashcard</h1>
+
       <ToastContainer />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.grid}>
@@ -88,7 +89,6 @@ export default function AddFlashcardPage({ token }) {
             />
           </div>
         </div>
-
         <input type="submit" value="Add Flashcard" className={styles.button} />
       </form>
     </Layout>
@@ -98,9 +98,19 @@ export default function AddFlashcardPage({ token }) {
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
 
+  // redirect regsiter pege when user not logged in
+  if (req.headers.token === undefined) {
+    return {
+      redirect: {
+        destination: '/account/login',
+        permanent: false,
+      },
+    }
+  }
+
   return {
     props: {
-      token,
+      token:token || null,
     },
   };
 }
