@@ -98,7 +98,7 @@ export default function AddFlashcardPage({ token }) {
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
 
-  // redirect regsiter pege when user not logged in
+  // redirect login pege when user not logged in
   if (req.headers.token === undefined) {
     return {
       redirect: {
