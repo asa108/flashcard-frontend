@@ -33,30 +33,30 @@ import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
 
 export default function HomePage({ flashcards }) {
-
+  console.log('flashcards',flashcards)
+  const [fl, setFl] = useState(flashcards)
+   console.log('fl outside',fl)
   const [auth,setAuth] = useState(false)
-  console.log(flashcards)
 
   useEffect(() => {
     checkIfAuth()
   }, [])
 
   // let fl;
-  let fl;
-  console.log('fl outside',fl)
-
+ 
   const checkIfAuth = () => {
   if (flashcards.statusCode === 401 || flashcards.statusCode === 403) {
     console.log('This is not authorized')
     setAuth(true)
   } else {
-    // console.log('Authorizaed')
+    console.log('Authorizaed')
     setAuth(false)
     const checkIfFlase = (flashcard) => {
       return flashcard.check1 === false || flashcard.check2 === false || flashcard.check3 === false
      }
     
     fl = flashcards.filter(checkIfFlase)
+    setFl(fl)
       console.log('fl inside', fl)
     
     // let flash = flashcards.filter(checkIfFlase)
