@@ -9,6 +9,7 @@ export default function FlashcardList({ flashcards, token }) {
   const [leftDisable, setLeftDisable] = useState(false);
   const [rightDisable, setRightDisable] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [auth, setAuth] = useState(false)
 
   const totalFlashcards = flashcards.length;
   let fl = flashcards[idx];
@@ -47,7 +48,9 @@ export default function FlashcardList({ flashcards, token }) {
   };
   return (
     <div className={styles.container}>
-      <Flashcard flashcard={fl} token={token} />
+      {
+        fl == undefined ? <div>hello</div> : <div>
+      <Flashcard flashcard={fl} token={token} /> 
       <div className={styles.icons}>
         <FaChevronLeft
           className={`${styles.arrow} ${
@@ -64,7 +67,10 @@ export default function FlashcardList({ flashcards, token }) {
           }`}
           onClick={next}
         />
-      </div>
+        </div> 
+        </div>
+      }
+      
     </div>
   );
 }
