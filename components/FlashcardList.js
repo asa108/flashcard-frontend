@@ -5,49 +5,51 @@ import styles from "@/styles/FlashcardList.module.css";
 import Flashcard from "./Flashcard";
 
 export default function FlashcardList({ flashcards, token }) {
+  // console.log('list.js',flashcards)
   const [idx, setIdx] = useState(0);
   const [leftDisable, setLeftDisable] = useState(false);
   const [rightDisable, setRightDisable] = useState(false);
   const [disable, setDisable] = useState(false);
 
-  const totalFlashcards = flashcards.length;
-  let fl = flashcards[idx];
+  // const totalFlashcards = flashcards.length;
+  // let fl = flashcards[idx];
 
-  useEffect(() => {
-    checkIndex();
-  });
+  // useEffect(() => {
+  //   checkIndex();
+  // });
 
-  const next = () => {
-    if (idx + 1 === totalFlashcards) {
-      setDisable(true);
-    } else {
-      setIdx(idx + 1);
-    }
-  };
+  // const next = () => {
+  //   if (idx + 1 === totalFlashcards) {
+  //     setDisable(true);
+  //   } else {
+  //     setIdx(idx + 1);
+  //   }
+  // };
 
-  const back = () => {
-    if (idx === 0) {
-      setDisable(true);
-    } else {
-      setIdx(idx - 1);
-    }
-  };
+  // const back = () => {
+  //   if (idx === 0) {
+  //     setDisable(true);
+  //   } else {
+  //     setIdx(idx - 1);
+  //   }
+  // };
 
-  const checkIndex = () => {
-    if (idx === 0) {
-      setLeftDisable(true);
-      setRightDisable(false);
-    } else if (idx + 1 === totalFlashcards) {
-      setRightDisable(true);
-      setLeftDisable(false);
-    } else {
-      setRightDisable(false);
-      setLeftDisable(false);
-    }
-  };
+  // const checkIndex = () => {
+  //   if (idx === 0) {
+  //     setLeftDisable(true);
+  //     setRightDisable(false);
+  //   } else if (idx + 1 === totalFlashcards) {
+  //     setRightDisable(true);
+  //     setLeftDisable(false);
+  //   } else {
+  //     setRightDisable(false);
+  //     setLeftDisable(false);
+  //   }
+  // };
   return (
     <div className={styles.container}>
-      <Flashcard flashcard={fl} token={token} />
+      <p>hello</p>
+      {/* <Flashcard flashcard={fl} token={token} />
       <div className={styles.icons}>
         <FaChevronLeft
           className={`${styles.arrow} ${
@@ -64,7 +66,7 @@ export default function FlashcardList({ flashcards, token }) {
           }`}
           onClick={next}
         />
-      </div>
+        </div> */}
     </div>
   );
 }

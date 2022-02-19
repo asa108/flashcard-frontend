@@ -50,7 +50,7 @@ export default function AddFlashcardPage({ token }) {
       toast.error("Something went wrong");
     } else {
       const fl = await res.json();
-      router.push("/account/dashboard");
+      router.push("/flashcards");
     }
   };
 
