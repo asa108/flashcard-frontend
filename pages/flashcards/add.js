@@ -8,9 +8,10 @@ import { parseCookies } from "@/helpers/index";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
-import { async } from "regenerator-runtime";
+import RegisterPage from '../account/login'
 
 export default function AddFlashcardPage({ token }) {
+  console.log('token',token)
   const [values, setValues] = useState({
     term: "",
     definition: "",
@@ -18,6 +19,8 @@ export default function AddFlashcardPage({ token }) {
     check2: false,
     check3: false,
   });
+
+  // tokenがnullだとregister pegeへ遷移
 
   const router = useRouter();
 
@@ -64,7 +67,10 @@ export default function AddFlashcardPage({ token }) {
         <a>Go Back</a>
       </Link>
       <h1>Add Flashcard</h1>
-      <ToastContainer />
+      {
+        token === null ? <RegisterPage /> :
+          <div>
+          <ToastContainer />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.grid}>
           <div>
@@ -91,6 +97,9 @@ export default function AddFlashcardPage({ token }) {
 
         <input type="submit" value="Add Flashcard" className={styles.button} />
       </form>
+          </div>
+      }
+      
     </Layout>
   );
 }
@@ -100,7 +109,7 @@ export async function getServerSideProps({ req }) {
 
   return {
     props: {
-      token,
+      token:token || null,
     },
   };
 }
