@@ -38,6 +38,7 @@ export default function CompletePage({ flashcards }) {
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
+  console.log('token',token)
 
   const res = await fetch(`${API_URL}/flashcards/me`, {
     method: "GET",
@@ -47,6 +48,8 @@ export async function getServerSideProps({ req }) {
   });
 
   const flashcards = await res.json();
+  console.log(flashcards)
+
 
   // redirect regsiter pege when user not logged in
   if (req.headers.token === undefined) {
