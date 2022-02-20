@@ -7,7 +7,6 @@ import FlashcardList from "@/components/FlashcardList";
 
 export default function CompletePage({ flashcards }) {
   const [fl, setFl] = useState(flashcards)
-  const [auth,setAuth] = useState(false)
 
   useEffect(() => {
     checkIfAuth()
@@ -28,10 +27,7 @@ export default function CompletePage({ flashcards }) {
  
   return (
     <Layout title="Completed Words | Flashcard">
-      <h1>AAA</h1>
-      {auth ? <h1>Landing Page</h1> :
        <FlashcardList flashcards={fl} />
-      }
     </Layout>
   );
 }
@@ -48,11 +44,11 @@ export async function getServerSideProps({ req }) {
   });
 
   const flashcards = await res.json();
-  console.log(flashcards)
+  // console.log(flashcards)
 
 
   // redirect regsiter pege when user not logged in
-  if (req.headers.token === undefined) {
+  if (token === undefined) {
     return {
       redirect: {
         destination: '/account/login',
