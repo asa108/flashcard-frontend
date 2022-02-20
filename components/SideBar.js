@@ -22,7 +22,7 @@ export default function SideBar() {
             </Link>
           </li>
           <li>
-            <Link href="/complete">
+            <Link href="/flashcards/complete">
               <a>Completed words</a>
             </Link>
           </li>
