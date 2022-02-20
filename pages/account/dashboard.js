@@ -8,8 +8,7 @@ import FlashcardList from "@/components/FlashcardList";
 export default function DashboardPage({ flashcards, token }) {
   return (
     <Layout title="User Dashboard">
-      <h1 className={styles.dash}>Dashbord</h1>
-      <h3>My Flashcards</h3>
+      <h1 className={styles.dash}>My Flashcards</h1>
       <FlashcardList flashcards={flashcards} token={token} />
     </Layout>
   );
