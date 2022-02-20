@@ -99,8 +99,8 @@ export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
   console.log('token',token)
 
-  // redirect regsiter pege when user not logged in
-  if (req.headers.token === undefined) {
+  // redirect login pege when user not logged in
+  if (token === undefined) {
     return {
       redirect: {
         destination: '/account/login',

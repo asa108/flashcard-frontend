@@ -36,8 +36,7 @@ export default function Flashcard({ flashcard, token }) {
 
   return (
     <div>
-      <p>Listcard</p>
-   <div
+     <div
         className={`${styles.card} ${flip ? `${styles.flip}` : ""}`}
         onClick={handleFlip}
       >
