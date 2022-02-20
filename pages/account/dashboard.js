@@ -9,7 +9,6 @@ export default function DashboardPage({ flashcards, token }) {
   return (
     <Layout title="User Dashboard">
       <h1 className={styles.dash}>Dashbord</h1>
-      <h3>My Flashcards</h3>
       <FlashcardList flashcards={flashcards} token={token} />
     </Layout>
   );
@@ -29,7 +28,7 @@ export async function getServerSideProps({ req }) {
   const flashcards = await res.json();
 
     // redirect regsiter pege when user not logged in
-  if (req.headers.token === undefined) {
+  if (token === undefined) {
     return {
       redirect: {
         destination: '/account/login',
