@@ -10,17 +10,14 @@ import styles from "@/styles/Flascard.module.css";
 import { parseCookies } from "@/helpers/index";
 
 export default function Flashcard({ flashcard, token }) {
-  // console.log(flashcard);
+  console.log(flashcard);
   const router = useRouter();
-  const [flip, setFlip] = useState(false);
-  const [check, setCheck] = useState(flashcard.check1);
-  console.log("check1", flashcard.check1);
-  console.log("check", check);
-
-  // useEffect(() => {
-  //   handleCheck();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const [flip, setFlip] = useState(false)
+  
+  //チェック1、2、3にuseStateを適応した.
+  var [check1, setCheck1] = useState(flashcard.check1)
+  var [check2, setCheck2] = useState(flashcard.check2)
+  var [check3, setCheck3] = useState(flashcard.check3)
 
   const handleFlip = () => {
     setFlip(!flip);
@@ -46,17 +43,15 @@ export default function Flashcard({ flashcard, token }) {
   };
 
   const handleCheck = async (id) => {
-    console.log("check", check);
-    setCheck(!check);
+    console.log(flashcard.id, check1, check2, check3);
     const values = {
       term: flashcard.term,
       definition: flashcard.definition,
-      check1: check,
-      check2: false,
-      check3: false,
+      check1: check1,
+      check2: check2,
+      check3: check3,
     };
-
-    const res = await fetch(`${API_URL}/flashcards/${id}`, {
+    const res = await fetch(`${API_URL}/flashcards/${flashcard.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +60,7 @@ export default function Flashcard({ flashcard, token }) {
       body: JSON.stringify(values),
     });
 
-    console.log("res", res);
+    // console.log("res", res);
     if (!res.ok) {
       if (res.status === 403 || res.status === 401) {
         toast.error("Unauthorized");
@@ -73,12 +68,13 @@ export default function Flashcard({ flashcard, token }) {
       }
       toast.error("Something went wrong");
     } else {
-      const flashcard = await res.json();
-      console.log("flashcard", flashcard);
-      router.push("/account/dashboard");
+      // const flashcard = await res.json();
+      // console.log("flashcard", flashcard);
+      // router.push("/account/dashboard");
     }
-  };
 
+  };
+  
   return (
     <div>
       <div
@@ -91,11 +87,35 @@ export default function Flashcard({ flashcard, token }) {
       <ToastContainer />
       <div className={styles.icons}>
         <FaRegCheckSquare
-          // onClick={}
-          className={`${styles.checkicon} ${check ? `${styles.done}` : ""}`}
+          className={ styles.checkicon + ' ' + (check1 ? styles.done : '') }
+          onClick={() => {                      //クリックイベント
+                  setCheck1((preState)=>{       //チェック1の更新処理開始
+                      check1 = !preState        //チェック1の状態を反転
+                      handleCheck()             //APIサーバーに送信
+                      return check1             //チェック1の状態更新完了
+                  })
+	       }}
         />
-        <FaRegCheckSquare className={styles.checkicon} />
-        <FaRegCheckSquare className={styles.checkicon} />
+        <FaRegCheckSquare
+          className={ styles.checkicon + ' ' + (check2 ? styles.done : '') }
+          onClick={() => {
+                  setCheck2((preState)=>{
+                      check2 = !preState
+                      handleCheck()
+                      return check2
+                  })
+	       }}
+        />
+        <FaRegCheckSquare
+          className={ styles.checkicon + ' ' + (check3 ? styles.done : '') }
+          onClick={() => {
+                  setCheck3((preState)=>{
+                      check3 = !preState
+                      handleCheck()
+                      return check3
+                  })
+	       }}
+        />
 
         <Link href={`/flashcards/edit/${flashcard.id}`}>
           <a className={styles.edit}>
