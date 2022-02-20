@@ -21,8 +21,7 @@ export default function HomePage({ flashcards }) {
     const checkIfFlase = (flashcard) => {
       return flashcard.check1 === false || flashcard.check2 === false || flashcard.check3 === false
      }
-    fl = flashcards.filter(checkIfFlase)
-    setFl(fl)
+    setFl(flashcards.filter(checkIfFlase))
   } 
 }
  
