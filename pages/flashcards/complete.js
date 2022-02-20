@@ -13,20 +13,16 @@ export default function CompletePage({ flashcards }) {
   }, [])
  
   const checkIfAuth = () => {
-  if (flashcards.statusCode === 401 || flashcards.statusCode === 403) {
-    setAuth(true)
-  } else {
-    setAuth(false)
     const checkIfFlase = (flashcard) => {
       return flashcard.check1 === true || flashcard.check2 === true || flashcard.check3 === true
      }
     fl = flashcards.filter(checkIfFlase)
     setFl(fl)
-  } 
 }
  
   return (
     <Layout title="Completed Words | Flashcard">
+      <h1>All words you memorized</h1>
        <FlashcardList flashcards={fl} />
     </Layout>
   );
@@ -34,7 +30,6 @@ export default function CompletePage({ flashcards }) {
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
-  console.log('token',token)
 
   const res = await fetch(`${API_URL}/flashcards/me`, {
     method: "GET",
@@ -44,8 +39,6 @@ export async function getServerSideProps({ req }) {
   });
 
   const flashcards = await res.json();
-  // console.log(flashcards)
-
 
   // redirect regsiter pege when user not logged in
   if (token === undefined) {
