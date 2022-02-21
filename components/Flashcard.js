@@ -42,7 +42,7 @@ export default function Flashcard({ flashcard, token }) {
     // }
   };
 
-  const handleCheck = async (id) => {
+  const handleCheck = async (check1,check2,check3) => {
     console.log(flashcard.id, check1, check2, check3);
     const values = {
       term: flashcard.term,
@@ -68,11 +68,10 @@ export default function Flashcard({ flashcard, token }) {
       }
       toast.error("Something went wrong");
     } else {
-      // const flashcard = await res.json();
-      // console.log("flashcard", flashcard);
-      // router.push("/account/dashboard");
+      const flashcard = await res.json();
+      console.log("flashcard", flashcard);
+      router.push("/account/dashboard");
     }
-
   };
   
   return (
@@ -91,8 +90,8 @@ export default function Flashcard({ flashcard, token }) {
           onClick={() => {                      //クリックイベント
                   setCheck1((preState)=>{       //チェック1の更新処理開始
                       check1 = !preState        //チェック1の状態を反転
-                      handleCheck()             //APIサーバーに送信
-                      return check1             //チェック1の状態更新完了
+                      handleCheck(!preState, check2, check3) //APIサーバーに送信
+                      return !preState             //チェック1の状態更新完了
                   })
 	       }}
         />
@@ -101,8 +100,8 @@ export default function Flashcard({ flashcard, token }) {
           onClick={() => {
                   setCheck2((preState)=>{
                       check2 = !preState
-                      handleCheck()
-                      return check2
+                      handleCheck(check1,!preState,check3)
+                      return !preState
                   })
 	       }}
         />
@@ -111,8 +110,8 @@ export default function Flashcard({ flashcard, token }) {
           onClick={() => {
                   setCheck3((preState)=>{
                       check3 = !preState
-                      handleCheck()
-                      return check3
+                      handleCheck(check1,check2,!preState)
+                      return!preState
                   })
 	       }}
         />
