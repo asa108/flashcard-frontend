@@ -19,12 +19,6 @@ export default function Flashcard({ flashcard, token }) {
   const [ [check1, setCheck1],
           [check2, setCheck2],
     [check3, setCheck3]] = useContext(FlashcardContext)
-  console.log('check1',check1)
-    
-  //チェック1、2、3にuseStateを適応した.  
-  // const [check1, setCheck1] = useState(flashcard.check1)
-  // const [check2, setCheck2] = useState(flashcard.check2)
-  // const [check3, setCheck3] = useState(flashcard.check3)
   
   // 使用してはいないが、useEffect追加.
   useEffect(() => {
@@ -55,7 +49,6 @@ export default function Flashcard({ flashcard, token }) {
   };
 
   const handleCheck = async (check1, check2, check3) => {
-    // console.log(flashcard.id, check1, check2, check3);
     const values = {
       term: flashcard.term,
       definition: flashcard.definition,
@@ -63,7 +56,6 @@ export default function Flashcard({ flashcard, token }) {
       check2: check2,
       check3: check3,
     };
-    console.log('id',flashcard.id)
     const res = await fetch(`${API_URL}/flashcards/${flashcard.id}`, {
       method: "PUT",
       headers: {
@@ -73,7 +65,6 @@ export default function Flashcard({ flashcard, token }) {
       body: JSON.stringify(values),
     });
 
-    // console.log("res", res);
     if (!res.ok) {
       if (res.status === 403 || res.status === 401) {
         toast.error("Unauthorized");
@@ -82,7 +73,6 @@ export default function Flashcard({ flashcard, token }) {
       toast.error("Something went wrong");
     } else {
       const flashcard = await res.json();
-      console.log("flashcard", flashcard);
       // router.push("/account/dashboard");
     }
 

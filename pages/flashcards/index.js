@@ -5,12 +5,11 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
 
-export default function HomePage({ flashcards,token }) {
-  const [fl, setFl] = useState(flashcards)
-    // console.log('fl',fl)
-
+export default function HomePage({ flashcards, token }) {
   const [auth,setAuth] = useState(false)
-
+  
+  const [fl, setFl] = useState(flashcards)
+  
   useEffect(() => {
     checkIfAuth()
   }, [])
@@ -29,6 +28,7 @@ export default function HomePage({ flashcards,token }) {
  
   return (
     <Layout title="Home Page | Flashcard">
+      <h1>Flashcard</h1>
       {auth ? <h1>Landing Page</h1> :
        <FlashcardList flashcards={fl} token={token} />
       }
