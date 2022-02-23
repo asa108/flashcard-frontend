@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
 
-export default function HomePage({ flashcards }) {
+export default function HomePage({ flashcards,token }) {
   const [fl, setFl] = useState(flashcards)
   const [auth,setAuth] = useState(false)
 
@@ -28,7 +28,7 @@ export default function HomePage({ flashcards }) {
   return (
     <Layout title="Home Page | Flashcard">
       {auth ? <h1>Landing Page</h1> :
-       <FlashcardList flashcards={fl} />
+       <FlashcardList flashcards={fl} token={token} />
       }
     </Layout>
   );
@@ -36,7 +36,6 @@ export default function HomePage({ flashcards }) {
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
-
   const res = await fetch(`${API_URL}/flashcards/me`, {
     method: "GET",
     headers: {

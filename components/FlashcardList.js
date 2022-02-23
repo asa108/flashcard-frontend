@@ -1,20 +1,35 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; //Reactを追加.
 import Link from "next/link";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import styles from "@/styles/FlashcardList.module.css";
 import Flashcard from "./Flashcard";
 
+export const FlashcardContext = React.createContext() // フラッシュカードのコンテキスト.
+
 export default function FlashcardList({ flashcards, token }) {
+
   const [idx, setIdx] = useState(0);
   const [leftDisable, setLeftDisable] = useState(false);
   const [rightDisable, setRightDisable] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [auth, setAuth] = useState(false)
+
+  // 親コンポーネント側でチェックを作る.
+  const [check1, setCheck1] = useState(false)
+  const [check2, setCheck2] = useState(false)
+  const [check3, setCheck3] = useState(false)
+  const checks = [ [check1, setCheck1], [check2, setCheck2], [check3, setCheck3] ]
 
   const totalFlashcards = flashcards.length;
   let fl = flashcards[idx];
+  console.log('fl',fl)
 
   useEffect(() => {
+    
+    // 状態を再セットする.
+    setCheck1(fl.check1)
+    setCheck2(fl.check2)
+    setCheck3(fl.check3)
+
     checkIndex();
   });
 
@@ -48,9 +63,12 @@ export default function FlashcardList({ flashcards, token }) {
   };
   return (
     <div className={styles.container}>
-      {
-        fl == undefined ? <div>hello</div> : <div>
-      <Flashcard flashcard={fl} token={token} /> 
+      
+         {/* valueは親子で共有させるデータ */}
+      <FlashcardContext.Provider value={checks}>
+        <Flashcard flashcard={fl} token={token}/>
+      </FlashcardContext.Provider>
+      
       <div className={styles.icons}>
         <FaChevronLeft
           className={`${styles.arrow} ${
@@ -67,10 +85,10 @@ export default function FlashcardList({ flashcards, token }) {
           }`}
           onClick={next}
         />
-        </div> 
-        </div>
-      }
-      
+      </div>
     </div>
   );
 }
+
+
+ 
