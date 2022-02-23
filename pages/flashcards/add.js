@@ -10,7 +10,6 @@ import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
 export default function AddFlashcardPage({ token }) {
-  console.log('token',token)
   const [values, setValues] = useState({
     term: "",
     definition: "",
@@ -97,7 +96,6 @@ export default function AddFlashcardPage({ token }) {
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
-  console.log('token',token)
 
   // redirect login pege when user not logged in
   if (token === undefined) {

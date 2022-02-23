@@ -21,7 +21,6 @@ export default function FlashcardList({ flashcards, token }) {
 
   const totalFlashcards = flashcards.length;
   let fl = flashcards[idx];
-  console.log('fl',fl)
 
   useEffect(() => {
     

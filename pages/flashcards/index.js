@@ -7,6 +7,8 @@ import FlashcardList from "@/components/FlashcardList";
 
 export default function HomePage({ flashcards,token }) {
   const [fl, setFl] = useState(flashcards)
+    // console.log('fl',fl)
+
   const [auth,setAuth] = useState(false)
 
   useEffect(() => {
