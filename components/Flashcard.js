@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react"; // useContextを追加.
 import Link from "next/link";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaPencilAlt, FaTrashAlt, FaRegCheckSquare } from "react-icons/fa";
@@ -12,7 +12,7 @@ import { FlashcardContext } from './FlashcardList' //追加
 
 export default function Flashcard({ flashcard, token }) {
 
-  // const router = useRouter();
+  const router = useRouter();
   const [flip, setFlip] = useState(false)
 
   // 親コンポーネントで作ったチェック.
@@ -41,6 +41,11 @@ export default function Flashcard({ flashcard, token }) {
     const data = await res.json();
 
     if (!res.ok) {
+      if (token === null) {
+          router.push("/account/login");
+        } else {
+        toast.error("Unauthorized");
+      }
       toast.error("error");
     } else {
       router.push("/account/dashboard");
@@ -67,7 +72,11 @@ export default function Flashcard({ flashcard, token }) {
 
     if (!res.ok) {
       if (res.status === 403 || res.status === 401) {
+        if (token === null) {
+          router.push("/account/login");
+        } else {
         toast.error("Unauthorized");
+        }
         return;
       }
       toast.error("Something went wrong");

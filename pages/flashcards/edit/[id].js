@@ -102,6 +102,16 @@ export default function EditPage({ fl, token }) {
 export async function getServerSideProps({ params: { id }, req }) {
   const { token } = parseCookies(req);
 
+    // redirect login pege when user not logged in
+  if (token === undefined) {
+    return {
+      redirect: {
+        destination: '/account/login',
+        permanent: false,
+      },
+    }
+  }
+
   const res = await fetch(`${API_URL}/flashcards/${id}`);
   const fl = await res.json();
 
