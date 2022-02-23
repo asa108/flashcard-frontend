@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/">
+        <Link href="/flashcards">
           <a>Flashcard</a>
         </Link>
       </div>
