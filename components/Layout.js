@@ -5,7 +5,6 @@ import styles from "@/styles/Layout.module.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sidebar from "./SideBar";
-import Showcase from "./Showcase";
 
 export default function Layout({ title, keywords, description, children }) {
   const router = useRouter();

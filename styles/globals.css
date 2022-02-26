@@ -10,6 +10,26 @@ html,
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.8;
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  width: 100%;
+  margin:0;
+  padding:0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+  h1{
+   font-size: 20px; 
+  }
 }
 
 a {
