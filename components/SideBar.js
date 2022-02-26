@@ -8,7 +8,7 @@ export default function SideBar() {
         <ul>
           <li>
             <Link href="/flashcards">
-              <a>Flashcard</a>
+              <a>Flashcards</a>
             </Link>
           </li>
           <li>

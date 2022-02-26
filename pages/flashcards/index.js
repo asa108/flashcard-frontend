@@ -19,11 +19,21 @@ export default function HomePage({ flashcards, token }) {
      }
     setFl(flashcards.filter(checkIfFlase))
 }
- 
   return (
     <Layout title="Home Page | Flashcard">
-      <h1>Flashcard</h1>
-     <FlashcardList flashcards={fl} token={token} />
+      <h1>Flashcards</h1>
+      {fl.length === 0 ?
+        <div>
+          There is no cards.
+             <br />
+        <Link href='/flashcards/add'>
+          <a>Add new flashcard!</a>
+          </Link>  
+        </div>
+        :
+        <FlashcardList flashcards={fl} token={token} />
+      }
+     
     </Layout>
   );
 }
@@ -47,7 +57,6 @@ export async function getServerSideProps({ req }) {
   }
 
   const flashcards = await res.json();
-
   return {
     props: { flashcards:flashcards || null, token:token|| null },
   };

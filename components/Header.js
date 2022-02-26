@@ -18,23 +18,13 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link href="/flashcards">
-              <a>Flashcard</a>
+            <Link href="/about">
+              <a>About</a>
             </Link>
           </li>
           {user ? (
             // If logged in
             <>
-              <li>
-                <Link href="/flashcards/add">
-                  <a>Add flashcard</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/account/dashboard">
-                  <a>Dashbord</a>
-                </Link>
-              </li>
               <li>
                 <button
                   onClick={() => logout()}

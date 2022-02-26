@@ -1,15 +1,25 @@
 import { parseCookies } from "@/helpers/index";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
+import Link from "next/link";
 import styles from "@/styles/Dashboard.module.css";
-import Flashcard from "@/components/Flashcard";
 import FlashcardList from "@/components/FlashcardList";
 
 export default function DashboardPage({ flashcards, token }) {
   return (
     <Layout title="User Dashboard">
       <h1 className={styles.dash}>All words</h1>
-      <FlashcardList flashcards={flashcards} token={token} />
+     {flashcards.length === 0 ?
+        <div>
+          There is no cards.
+             <br />
+        <Link href='/flashcards/add'>
+          <a>Add new flashcard!</a>
+          </Link>  
+        </div>
+        :
+       <FlashcardList flashcards={flashcards} token={token} />
+      }
     </Layout>
   );
 }

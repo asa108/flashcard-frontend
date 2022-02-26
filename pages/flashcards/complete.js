@@ -1,5 +1,6 @@
 import { useEffect,useState } from 'react'
 import { parseCookies } from "@/helpers/index";
+import Link from "next/link";
 import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
@@ -13,15 +14,25 @@ export default function CompletePage({ flashcards,token }) {
 
     const checkIfAuth = () => {
     const checkIfCheckValue = (flashcard) => {
-      return flashcard.check1 !== false && flashcard.check2 !== false && flashcard.check3 !== false
+      return flashcard.check1 === true && flashcard.check2 === true && flashcard.check3 === true
      }
       setFl(flashcards.filter(checkIfCheckValue))
     }
- 
+
   return (
     <Layout title="Completed Words | Flashcard">
       <h1>All words you memorized</h1>
-       <FlashcardList flashcards={fl} token={token} />
+           {fl.length === 0 ?
+        <div>
+          There is no cards.
+             <br />
+        <Link href='/flashcards/add'>
+          <a>Add new flashcard!</a>
+          </Link>  
+        </div>
+        :
+        <FlashcardList flashcards={fl} token={token} />
+      }
     </Layout>
   );
 }
