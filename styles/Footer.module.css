@@ -6,3 +6,16 @@
 .footer p{
     margin: 5px 0;
 }
+
+@media (max-width: 768px) {
+  .footer{
+    position: relative;
+    left: 25%;
+    width: 400px;
+    margin: auto;
+}
+
+.footer p{
+    font-size: 13px;
+}
+}

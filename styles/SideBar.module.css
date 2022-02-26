@@ -4,7 +4,6 @@
     position: fixed;
     top:30px;
     left:0px;
-    
 }
 
 .sidebar li{
@@ -12,3 +11,18 @@
     list-style-type: none;
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    margin: 20px;
+    position: relative;
+    top: 470px;
+    left: 30%;
+    z-index: 3;
+  }
+
+  .sidebar li{
+    margin: 25px 40px;
+    list-style-type: none;
+    font-size: 15px;
+}
+}

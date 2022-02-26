@@ -3,3 +3,12 @@
   min-height: 600px;
   padding: 0 30px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px auto;
+    flex: 1;
+    position: relative;
+    top: -150px;
+  }
+}

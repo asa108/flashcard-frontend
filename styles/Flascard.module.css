@@ -52,3 +52,16 @@
 .icons .edit{
     margin: 0 20px;
 }
+
+@media (max-width: 768px) {
+  .card {
+    margin: auto;
+    height: 250px;
+    width: 400px;
+  }
+
+  .icons{
+    text-align: center;
+    margin: 20px 0; 
+}
+}

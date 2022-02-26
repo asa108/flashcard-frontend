@@ -59,6 +59,7 @@ export default function AddFlashcardPage({ token }) {
   };
   return (
     <Layout title="Add flashcard">
+      <div className={styles.container}>
       <Link href="/flashcards">
         <a>Go Back</a>
       </Link>
@@ -89,7 +90,8 @@ export default function AddFlashcardPage({ token }) {
           </div>
         </div>
         <input type="submit" value="Add Flashcard" className={styles.button} />
-      </form>
+        </form>
+        </div>
     </Layout>
   );
 }
