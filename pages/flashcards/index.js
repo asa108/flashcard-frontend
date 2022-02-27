@@ -5,8 +5,7 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import FlashcardList from "@/components/FlashcardList";
 
-export default function HomePage({ flashcards, token }) {
-  
+export default function HomePage({ flashcards, token }) {  
   const [fl, setFl] = useState(flashcards)
   
   useEffect(() => {
@@ -58,6 +57,6 @@ export async function getServerSideProps({ req }) {
 
   const flashcards = await res.json();
   return {
-    props: { flashcards:flashcards || null, token:token|| null },
+    props: { flashcards, token },
   };
 }

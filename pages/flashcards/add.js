@@ -111,7 +111,7 @@ export async function getServerSideProps({ req }) {
 
   return {
     props: {
-      token:token || null,
+      token
     },
   };
 }

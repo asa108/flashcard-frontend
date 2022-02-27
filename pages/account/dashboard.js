@@ -46,6 +46,6 @@ export async function getServerSideProps({ req }) {
   }
 
   return {
-    props: { flashcards: flashcards || null, token:token||null },
+    props: { flashcards, token },
   };
 }
