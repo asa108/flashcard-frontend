@@ -16,7 +16,7 @@ export default function SamplePage() {
   return (
     <Layout title="Sample Page | Flashcard">
       <h1>Flashcard</h1>
-       <FlashcardList flashcards={flashcards} token={null} />
+       <FlashcardList flashcards={flashcards} token='sample_token' />
     </Layout>
   );
 }
