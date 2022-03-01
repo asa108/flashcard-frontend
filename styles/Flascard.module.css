@@ -28,7 +28,7 @@
     position: absolute;
     padding: 1rem;
     backface-visibility: hidden;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .card .back{
@@ -53,15 +53,33 @@
     margin: 0 20px;
 }
 
-@media (max-width: 768px) {
-  .card {
-    margin: auto;
-    height: 250px;
-    width: 400px;
-  }
+.icons .delete{
+    width: 100px;
+}
 
-  .icons{
-    text-align: center;
-    margin: 20px 0; 
-}
-}
+@media (max-width: 768px) {
+    .card {
+        margin: auto;
+        height: 250px;
+        width: 400px;
+    }
+
+    .icons{
+        text-align: center;
+        margin: 20px 0; 
+        }
+
+    .icons .checkicon {
+        width: 40px;
+        height: 30px;
+        }
+
+    .icons .edit {
+        font-size: 23px;
+        }
+
+    .icons .delete{
+        font-size: 23px;
+        }
+
+    }
