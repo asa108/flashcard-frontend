@@ -17,3 +17,12 @@
     cursor: unset;
     color: rgb(214, 214, 214);
 }
+
+@media (max-width: 768px) {
+    .icons .arrow{
+    font-size: 20px;
+    }
+    .icons span{
+        font-size: 20px;
+    }
+}

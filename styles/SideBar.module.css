@@ -13,9 +13,9 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    margin: 20px;
+    margin:auto;
     position: relative;
-    top: 470px;
+    top: 550px;
     left: 30%;
     z-index: 3;
   }
@@ -23,6 +23,6 @@
   .sidebar li{
     margin: 25px 40px;
     list-style-type: none;
-    font-size: 15px;
+    font-size: 18px;
 }
 }

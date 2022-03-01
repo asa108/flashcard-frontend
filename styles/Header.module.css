@@ -62,11 +62,16 @@
   }
 
   .header a {
-    margin:0 20px;
+  margin-right: 0px;
+}
+
+  .header li{
+    width: 145px;
   }
+
 
   .logo {
     margin: 20px 0;
-    margin-right: 180px;
+    margin-right: 100px;
   }
 }
